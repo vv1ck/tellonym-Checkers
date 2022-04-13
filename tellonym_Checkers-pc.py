@@ -2,6 +2,7 @@ try:
 	from requests import get,post
 	from random import choice
 	import requests
+	from user_agent import generate_user_agent
 	from time import sleep
 	from threading import Lock,Thread
 except Exception as e:exit(e)
@@ -11,19 +12,7 @@ def telegram_vv1ck(*a, **b):
 	with PRNT:
 		print(*a, **b)
 lst='q1az2ws3xe4dcr5fvt6gby7hnu8jmi9klo_p'
-def User_Agent():
-	ios = [
-		'13_5','13_6','14','13_3','14_4','15','12_6'
-		'15_1','15_1_1','14_3','14_6','13_2','12_7']
-	rv = [
-		'604.1','596.2','706.6',
-		'397.3','937.9','936.3']
-	version = [
-		'18.5.0','21.1.0',
-		'19.3.0','19.1.0',
-		'17.7.0','16.6.1']
-	User_Agent = 'Mozilla/5.0 (iPhone; CPU iPhone OS '+choice(ios)+' like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/'+choice(version)+' Mobile/15E148 Safari/'+choice(rv)
-	return User_Agent
+
 def Exit():
     try:
         sleep(999999)
@@ -48,7 +37,7 @@ class tellonym_Checkers:
 		try:
 			while 1:
 				username = str(''.join((choice(lst) for i in range(self.use))))
-				sent = get(f'https://tellonym.me/{username}',headers={'Host': 'tellonym.me','Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8','User-Agent': User_Agent(),'Accept-Language': 'ar','Connection': 'keep-alive'})
+				sent = get(f'https://tellonym.me/{username}',headers={'Host': 'tellonym.me','Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8','User-Agent': generate_user_agent(),'Accept-Language': 'ar','Connection': 'keep-alive'})
 				if sent.status_code == 200:
 					self.No+1
 					telegram_vv1ck(f'\rAvailable:{self.done} |not Available:{self.No} |[{username}]\r',end="")
